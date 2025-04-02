@@ -46,9 +46,15 @@ class LeaderboardUpdater:
             # 检查是否是本月的对话
             date_str = post.get('date')
             if date_str:
-                dialogue_date = datetime.strptime(str(date_str), '%Y-%m-%d')
-                if dialogue_date.strftime('%Y-%m') == self.current_month:
-                    self.monthly_stars.append((author, self.users[author]['score']))
+                try:
+                    if isinstance(date_str, str):
+                        dialogue_date = datetime.strptime(date_str, '%Y-%m-%d')
+                    else:
+                        dialogue_date = date_str
+                    if dialogue_date.strftime('%Y-%m') == self.current_month:
+                        self.monthly_stars.append((author, self.users[author]['score']))
+                except Exception as e:
+                    print(f"Error parsing date in {file_path}: {str(e)}")
 
             # 更新用户等级
             self.users[author]['level'] = self.calculate_level(self.users[author]['score'])
