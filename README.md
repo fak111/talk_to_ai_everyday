@@ -1,26 +1,125 @@
+# Talk to AI Everyday | 与AI日常对话
 
-# GitHub 项目优化方案：talk_to_ai_everyday
+[English](#english) | [中文](#chinese)
 
-感谢您分享这个创新项目构想和补充信息。以下是一个全面的实施计划，整合了您提出的积分奖励机制和国际化社区愿景。
+# English
 
-## 项目架构设计
+> Daily AI conversations for collective growth
 
-### 核心模块结构
+## Vision
+
+Through recording daily conversations with AI, we aim to:
+- Cultivate structured thinking abilities
+- Share valuable Q&A insights
+- Explore best practices for AI-assisted personal growth together
+
+## How to Participate
+
+1. Fork this repository
+2. Create your conversation file using the template
+3. Submit a PR to share your conversation
+
+## Reward Program
+
+The first 10 contributors to reach 100 points will receive a reward of 100 RMB!
+- Daily conversation: +5 points
+- See [reward system](./REWARD_SYSTEM.md) for more ways to earn points
+
+## Leaderboard
+
+| Rank | User | Points | Submissions |
+|------|------|--------|-------------|
+| 1    | user1| 45     | 9          |
+| ...  | ...  | ...    | ...        |
+
+[View full leaderboard](./community/leaderboard.md)
+
+## Featured Conversations
+
+- [Career Planning Reflection](./conversations/featured/2025-04-01_user1_zh_career-planning.md) - by @user1
+- [Learning Methods Exploration](./conversations/featured/2025-04-02_user2_en_learning-methods.md) - by @user2
+
+## Multi-language Support
+
+We welcome conversation contributions in any language! Currently, we have examples in Chinese and English, and we look forward to adding more languages.
+
+## Project Structure
+
+```
+talk_to_ai_everyday/
+├── README.md                     # Project introduction and guidelines
+├── CONTRIBUTING.md              # Detailed contribution guidelines
+├── REWARD_SYSTEM.md            # Reward mechanism details
+├── conversations/              # Main conversation directory
+│   ├── by_user/                # Organized by username
+│   ├── by_topic/               # Organized by topic
+│   └── featured/               # Featured conversations
+├── resources/                  # Resources folder
+│   ├── templates/              # Conversation templates
+│   └── guides/                 # Prompt technique guides
+└── community/                  # Community folder
+    └── leaderboard.md          # Points leaderboard
+```
+
+---
+
+# Chinese
+
+> 每日AI对话，共同成长
+
+## 项目愿景
+
+通过记录与AI的日常对话，我们旨在：
+- 培养结构化思考能力
+- 分享有价值的问答见解
+- 共同探索AI辅助个人成长的最佳实践
+
+## 参与方式
+
+1. Fork本仓库
+2. 按模板创建您的对话文件
+3. 提交PR分享您的对话
+
+## 奖励计划
+
+首批达到100积分的10名贡献者将获得100元人民币奖励！
+- 每日对话：+5分
+- 更多积分获取方式见[奖励系统](./REWARD_SYSTEM.md)
+
+## 积分排行榜
+
+| 排名 | 用户 | 积分 | 提交次数 |
+|-----|------|-----|---------|
+| 1   | user1 | 45 | 9 |
+| ... | ... | ... | ... |
+
+[查看完整排行榜](./community/leaderboard.md)
+
+## 精选对话
+
+- [职业规划思考](./conversations/featured/2025-04-01_user1_zh_career-planning.md) - by @user1
+- [学习方法探索](./conversations/featured/2025-04-02_user2_en_learning-methods.md) - by @user2
+
+## 多语言支持
+
+我们欢迎任何语言的对话贡献！目前已有中文、英文对话示例，期待更多语言的加入。
+
+## 项目结构
 
 ```
 talk_to_ai_everyday/
 ├── README.md                     # 项目简介、愿景和参与指南
-├── CONTRIBUTING.md               # 贡献详细指南
-├── REWARD_SYSTEM.md              # 奖励机制详细说明
-├── conversations/               # 对话记录主目录
-│   ├── by_user/                  # 按用户名组织
-│   ├── by_topic/                 # 按主题分类
-│   └── featured/                 # 精选对话
-├── resources/                   # 资源文件夹
-│   ├── templates/                # 对话模板
-│   └── guides/                   # 提示技巧指南
-└── community/                   # 社区文件夹
-    ├── leaderboard.md            # 积分排行榜
+├── CONTRIBUTING.md              # 贡献详细指南
+├── REWARD_SYSTEM.md            # 奖励机制详细说明
+├── conversations/              # 对话记录主目录
+│   ├── by_user/                # 按用户名组织
+│   ├── by_topic/               # 按主题分类
+│   └── featured/               # 精选对话
+├── resources/                  # 资源文件夹
+│   ├── templates/              # 对话模板
+│   └── guides/                 # 提示技巧指南
+└── community/                  # 社区文件夹
+    └── leaderboard.md          # 积分排行榜
 ```
 
 ## 奖励规则与实施方法

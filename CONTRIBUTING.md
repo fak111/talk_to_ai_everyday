@@ -1,70 +1,80 @@
-# Contributing to Talk to AI Everyday
+# Contributing Guidelines | 贡献指南
 
-感谢您对本项目的关注！这份文档将指导您如何参与贡献。
+## How to Contribute | 如何贡献
 
-## 参与步骤
+1. **Fork & Clone | Fork并克隆**
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/talk_to_ai_everyday.git
+   cd talk_to_ai_everyday
+   ```
 
-1. Fork 本仓库
-2. 创建您的对话分支 (`git checkout -b dialogue/your-dialogue-topic`)
-3. 按模板创建对话文件
-4. 提交您的更改 (`git commit -m 'Add: 对话主题'`)
-5. 推送到分支 (`git push origin dialogue/your-dialogue-topic`)
-6. 创建 Pull Request
+2. **Create New Branch | 创建新分支**
+   ```bash
+   git checkout -b feature/your-conversation-name
+   ```
 
-## 对话文件要求
+3. **Add Your Conversation | 添加对话**
+   - Use the template from `resources/templates/conversation_template.md`
+   - Place your file in `conversations/by_user/YOUR-USERNAME/`
+   - Follow the naming convention: `YYYY-MM-DD_username_lang_brief-title.md`
 
-### 文件命名规范
+4. **Commit Changes | 提交更改**
+   ```bash
+   git add .
+   git commit -m "Add conversation: brief description"
+   git push origin feature/your-conversation-name
+   ```
 
-使用以下格式：`YYYY-MM-DD_username_[lang]_brief-title.md`
+5. **Create Pull Request | 创建Pull Request**
+   - Go to GitHub and create a new PR
+   - Fill in the PR template
+   - Wait for review and approval
 
-示例：`2025-04-02_fak111_zh_career-planning.md`
+## Quality Standards | 质量标准
 
-### 文件内容要求
+1. **Content Requirements | 内容要求**
+   - Original conversations only
+   - Clear learning objectives
+   - Meaningful insights
+   - Proper formatting
 
-1. 必须包含 YAML 前置信息
-2. 清晰的对话目标
-3. 完整的对话内容
-4. 个人反思与收获（推荐）
+2. **File Structure | 文件结构**
+   - Valid YAML front matter
+   - Proper markdown formatting
+   - Correct file naming
+   - Appropriate tags
 
-### YAML 前置信息示例
+3. **Language | 语言要求**
+   - Any language welcome
+   - Consistent language within conversation
+   - Clear and concise writing
+   - Proper grammar and spelling
 
-```yaml
----
-date: 2025-04-02
-author: your_github_username
-language: zh
-tags: [tag1, tag2, tag3]
-summary: "简短的对话主题概述"
----
-```
+## Best Practices | 最佳实践
 
-## 质量标准
+1. **Conversation Quality | 对话质量**
+   - Focus on one main topic
+   - Include context and background
+   - Show problem-solving process
+   - Share personal insights
 
-好的对话应该具备：
+2. **Documentation | 文档**
+   - Follow the template
+   - Include relevant tags
+   - Add meaningful summaries
+   - Proper section organization
 
-1. 明确的目标和问题背景
-2. 深入的思考和探讨
-3. 实用的见解或可行的解决方案
-4. 清晰的结构和格式
+3. **Community Engagement | 社区参与**
+   - Respond to feedback
+   - Help review others' PRs
+   - Share knowledge
+   - Be respectful and inclusive
 
-## 积分规则
+## Need Help? | 需要帮助？
 
-1. 每日提交一次有质量的 AI 对话记录：+5分
-2. 对话获得社区精选：额外 +10分
-3. 参与每周挑战并完成：+15分
-4. 提供功能改进或文档优化：+5至+20分
-
-## 行为准则
-
-1. 尊重他人，保持友善
-2. 遵循项目规范
-3. 乐于分享和交流
-4. 接受建设性意见
-
-## 需要帮助？
-
-- 查看 [示例对话](./conversations/featured/)
-- 在 Issues 中提问
-- 阅读 [常见问题](./resources/guides/FAQ.md)
+- Check our [conversation guide](./resources/guides/conversation_guide.md)
+- Review [example conversations](./conversations/featured/)
+- Open an issue for questions
+- Join our community discussions
 
 再次感谢您的贡献！

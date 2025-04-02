@@ -1,75 +1,59 @@
-# 奖励系统说明
+# Reward System | 奖励系统
 
-本项目采用积分制度来鼓励社区成员持续参与和贡献高质量内容。
+## Points System | 积分系统
 
-## 积分获取方式
+### How to Earn Points | 如何获取积分
 
-### 1. 日常对话贡献
-- 每日提交一次有质量的 AI 对话记录：**+5分**
-  - 需符合[贡献指南](./CONTRIBUTING.md)中的质量标准
-  - 每24小时内仅计算一次
-  - 对话必须包含完整的 YAML 前置信息
+1. **Daily Conversations | 每日对话**
+   - Submit a quality AI conversation: +5 points
+   - Featured conversation selection: +10 bonus points
+   - Weekly challenge completion: +15 points
 
-### 2. 精选内容奖励
-- 对话被评选为社区精选：**额外 +10分**
-  - 由社区投票和管理员共同评定
-  - 每月评选一次
-  - 精选对话将在首页展示
+2. **Community Contributions | 社区贡献**
+   - Documentation improvements: +5 points
+   - Bug fixes: +10 points
+   - New features: +20 points
+   - Translations: +5 points per language
 
-### 3. 每周挑战
-- 完成每周主题挑战：**+15分**
-  - 需在指定时间内完成
-  - 符合挑战要求和质量标准
-  - 每个挑战主题仅可参与一次
+3. **Quality Bonuses | 质量奖励**
+   - High-quality conversation (determined by moderators): +5 bonus points
+   - Community favorite (most reactions): +10 bonus points
+   - Educational value (helps others learn): +5 bonus points
 
-### 4. 项目贡献
-- 文档改进：**+5分**
-- 功能优化：**+10分**
-- 重要功能实现：**+20分**
+### Level System | 等级系统
 
-## 特殊奖励
+| Level | Points Required | Title |
+|-------|----------------|-------|
+| 1     | 0-49          | Beginner |
+| 2     | 50-99         | Explorer |
+| 3     | 100-199       | Practitioner |
+| 4     | 200+          | Master |
 
-### 首批贡献者奖励
-- 首批达到 100 积分的 10 名贡献者：
-  - 获得 100 元人民币奖励
-  - 获得"早期贡献者"徽章
-  - 优先参与社区决策
+## Rewards | 奖励
 
-### 月度之星
-- 每月评选最活跃贡献者：
-  - 获得"月度之星"徽章
-  - 在项目首页展示
-  - 可参与下月精选内容评选
+1. **Monetary Rewards | 现金奖励**
+   - First 10 contributors to reach 100 points: 100 RMB each
+   - Monthly top contributor: 200 RMB
 
-## 积分等级
+2. **Recognition | 荣誉奖励**
+   - Featured on leaderboard
+   - Special badges on profile
+   - Opportunity to become community moderator
 
-| 等级 | 所需积分 | 特权 |
-|-----|---------|------|
-| 新手 | 0-49 | 基础访问权限 |
-| 进阶者 | 50-99 | 可参与内容评选 |
-| 专家 | 100-199 | 可成为领域专家 |
-| 大师 | 200+ | 可参与项目决策 |
+## Rules & Guidelines | 规则与指南
 
-## 奖励发放
+1. **Quality Requirements | 质量要求**
+   - Conversations must be original
+   - Clear learning objectives
+   - Proper formatting following template
+   - Meaningful insights or takeaways
 
-1. **积分更新**
-   - 通过 GitHub Actions 自动计算
-   - 每日更新排行榜
-   - 实时反映在个人主页
+2. **Point Calculation | 积分计算**
+   - Points are calculated daily
+   - Bonus points are awarded within 7 days
+   - Negative points for spam or low-quality submissions
 
-2. **现金奖励**
-   - 达到条件后通过 Issue 通知
-   - 支持多种收款方式
-   - 7个工作日内发放
-
-3. **徽章授予**
-   - 自动添加到个人主页
-   - 在排行榜中显示
-   - 永久保留
-
-## 注意事项
-
-1. 积分规则可能会根据社区发展适当调整
-2. 作弊或违规行为将取消积分资格
-3. 所有奖励评定结果由社区共同监督
-4. 有关积分争议可通过 Issue 提出
+3. **Dispute Resolution | 争议解决**
+   - All point allocations can be disputed
+   - Community moderators make final decisions
+   - Appeals can be made through GitHub issues
