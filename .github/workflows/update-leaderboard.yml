@@ -4,15 +4,22 @@ on:
   schedule:
     - cron: '0 0 * * *'  # 每天 UTC 00:00 运行
   workflow_dispatch:      # 允许手动触发
-  push:                  # 添加 push 触发器
+  push:                  # push 触发器
     paths:
       - 'conversations/**'  # 只有对话文件变更时触发
     branches:
       - main              # 只在 main 分支触发
+  pull_request:          # PR 触发器
+    types: [opened, synchronize, reopened, closed]
+    paths:
+      - 'conversations/**'  # 只有对话文件变更时触发
 
 jobs:
   update-leaderboard:
     runs-on: ubuntu-latest
+    # 只在 PR 合并到 main 分支时或直接推送到 main 分支时更新积分
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+
     permissions:
       contents: write
       pull-requests: read
@@ -39,6 +46,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit changes
+        # 只在非 PR 事件时提交更改
+        if: github.event_name != 'pull_request'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
