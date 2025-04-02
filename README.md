@@ -23,7 +23,8 @@ Through recording daily conversations with AI, we aim to:
 
 The first 10 contributors to reach 100 points will receive a reward of 100 RMB!
 - Daily conversation: +5 points
-- See [reward system](./REWARD_SYSTEM.md) for more ways to earn points
+- Featured conversation: +10 bonus points
+- See [reward system](./REWARD_SYSTEM.md) for more details
 
 ## Leaderboard
 
@@ -47,17 +48,15 @@ We welcome conversation contributions in any language! Currently, we have exampl
 
 ```
 talk_to_ai_everyday/
-├── README.md                     # Project introduction and guidelines
-├── CONTRIBUTING.md              # Detailed contribution guidelines
-├── REWARD_SYSTEM.md            # Reward mechanism details
-├── conversations/              # Main conversation directory
+├── README.md                     # Project introduction
+├── CONTRIBUTING.md              # Contribution guidelines
+├── REWARD_SYSTEM.md            # Reward system details
+├── conversations/              # Conversation records
 │   ├── by_user/                # Organized by username
-│   ├── by_topic/               # Organized by topic
 │   └── featured/               # Featured conversations
-├── resources/                  # Resources folder
-│   ├── templates/              # Conversation templates
-│   └── guides/                 # Prompt technique guides
-└── community/                  # Community folder
+├── resources/                  # Resources
+│   └── templates/              # Conversation templates
+└── community/                  # Community
     └── leaderboard.md          # Points leaderboard
 ```
 
@@ -84,7 +83,8 @@ talk_to_ai_everyday/
 
 首批达到100积分的10名贡献者将获得100元人民币奖励！
 - 每日对话：+5分
-- 更多积分获取方式见[奖励系统](./REWARD_SYSTEM.md)
+- 精选对话：+10额外积分
+- 更多详情见[奖励系统](./REWARD_SYSTEM.md)
 
 ## 积分排行榜
 
@@ -108,17 +108,15 @@ talk_to_ai_everyday/
 
 ```
 talk_to_ai_everyday/
-├── README.md                     # 项目简介、愿景和参与指南
-├── CONTRIBUTING.md              # 贡献详细指南
-├── REWARD_SYSTEM.md            # 奖励机制详细说明
-├── conversations/              # 对话记录主目录
+├── README.md                     # 项目简介
+├── CONTRIBUTING.md              # 贡献指南
+├── REWARD_SYSTEM.md            # 奖励系统详情
+├── conversations/              # 对话记录
 │   ├── by_user/                # 按用户名组织
-│   ├── by_topic/               # 按主题分类
 │   └── featured/               # 精选对话
-├── resources/                  # 资源文件夹
-│   ├── templates/              # 对话模板
-│   └── guides/                 # 提示技巧指南
-└── community/                  # 社区文件夹
+├── resources/                  # 资源文件
+│   └── templates/              # 对话模板
+└── community/                  # 社区
     └── leaderboard.md          # 积分排行榜
 ```
 
