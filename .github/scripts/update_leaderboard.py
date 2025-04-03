@@ -29,9 +29,12 @@ class LeaderboardUpdater:
 
     def process_dialogue(self, file_path):
         try:
-            post = frontmatter.load(file_path)
-            author = post.get('author')
-            if not author:
+            # 从文件名中提取作者信息
+            filename = os.path.basename(file_path)
+            parts = filename.split('_')
+            if len(parts) >= 2:
+                author = parts[1]  # 从文件名格式 YYYY-MM-DD_username_lang_title 中提取
+            else:
                 return
 
             # 基础分：每个对话 +5 分
@@ -44,17 +47,13 @@ class LeaderboardUpdater:
                 self.users[author]['featured'] += 1
 
             # 检查是否是本月的对话
-            date_str = post.get('date')
-            if date_str:
-                try:
-                    if isinstance(date_str, str):
-                        dialogue_date = datetime.strptime(date_str, '%Y-%m-%d')
-                    else:
-                        dialogue_date = date_str
-                    if dialogue_date.strftime('%Y-%m') == self.current_month:
-                        self.monthly_stars.append((author, self.users[author]['score']))
-                except Exception as e:
-                    print(f"Error parsing date in {file_path}: {str(e)}")
+            try:
+                date_str = parts[0]  # YYYY-MM-DD
+                dialogue_date = datetime.strptime(date_str, '%Y-%m-%d')
+                if dialogue_date.strftime('%Y-%m') == self.current_month:
+                    self.monthly_stars.append((author, self.users[author]['score']))
+            except Exception as e:
+                print(f"Error parsing date in {file_path}: {str(e)}")
 
             # 更新用户等级
             self.users[author]['level'] = self.calculate_level(self.users[author]['score'])
@@ -167,9 +166,10 @@ class LeaderboardUpdater:
         return "\n".join(content)
 
     def update(self):
-        # 处理所有对话文件
-        for dialogue_path in glob.glob("conversations/**/*.md", recursive=True):
-            self.process_dialogue(dialogue_path)
+        # 处理所有对话文件（支持 .md 和 .html）
+        for ext in ['md', 'html']:
+            for dialogue_path in glob.glob(f"conversations/**/*.{ext}", recursive=True):
+                self.process_dialogue(dialogue_path)
 
         # 生成并保存排行榜
         leaderboard_content = self.generate_leaderboard()
