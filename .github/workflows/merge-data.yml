@@ -22,15 +22,15 @@ jobs:
           ref: main
 
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update leaderboard [Automated]"
-          committer: GitHub Action <action@github.com>
-          author: GitHub Action <action@github.com>
           branch: auto-leaderboard-update
           delete-branch: true
           title: "自动更新积分排行榜"
+          base: main
           body: |
             此 PR 由 GitHub Actions 自动创建，用于更新社区积分排行榜。
 
@@ -39,3 +39,14 @@ jobs:
             automated-pr
             leaderboard-update
           draft: false
+
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-number
+        run: |
+          # 启用自动合并
+          gh pr merge --auto --merge "${{ steps.cpr.outputs.pull-request-number }}"
+          # 等待合并完成
+          gh pr checks "${{ steps.cpr.outputs.pull-request-number }}" --watch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
