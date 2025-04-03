@@ -1,0 +1,41 @@
+name: Merge Leaderboard Data
+
+on:
+  push:
+    branches:
+      - leaderboard-data
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  merge-to-main:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update leaderboard [Automated]"
+          committer: GitHub Action <action@github.com>
+          author: GitHub Action <action@github.com>
+          branch: auto-leaderboard-update
+          delete-branch: true
+          title: "自动更新积分排行榜"
+          body: |
+            此 PR 由 GitHub Actions 自动创建，用于更新社区积分排行榜。
+
+            变更是基于最新的社区贡献自动计算的。
+          labels: |
+            automated-pr
+            leaderboard-update
+          draft: false
