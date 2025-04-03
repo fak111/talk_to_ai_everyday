@@ -1,12 +1,41 @@
-# Community Leaderboard | 社区积分排行榜
+# 社区积分排行榜
 
-## Current Rankings | 当前排名
+> 最后更新时间：2025-04-02 15:10:07 UTC
 
-| Rank | User | Points | Submissions | Last Active |
-|------|------|--------|-------------|-------------|
-| 1    | user1| 45     | 9          | 2024-04-02  |
+## 本月之星 🌟
 
-## Rules | 规则
+1. **user1** - 15分
 
-See [REWARD_SYSTEM.md](../REWARD_SYSTEM.md) for detailed rules and point calculation methods.
-查看 [REWARD_SYSTEM.md](../REWARD_SYSTEM.md) 了解详细规则和积分计算方法.
+2. **user2** - 15分
+
+## 总积分排行 🏆
+
+| 排名 | 用户 | 积分 | 对话数 | 精选数 | 等级 |
+|-----|------|-----|--------|--------|------|
+| 1 | admin | 15 | 1 | 1 | 新手 |
+| 2 | user1 | 15 | 1 | 1 | 新手 |
+| 3 | user2 | 15 | 1 | 1 | 新手 |
+| 4 | zhangbeibei | 10 | 2 | 0 | 新手 |
+
+## 贡献者等级分布
+
+- 大师 (200+): 0 人
+- 专家 (100-199): 0 人
+- 进阶者 (50-99): 0 人
+- 新手 (0-49): 4 人
+
+## 里程碑达成者
+
+### 首批 100 积分达成者
+暂无数据
+
+### 精选对话作者
+- admin
+- user1
+- user2
+
+## 说明
+
+- 积分更新频率：每日自动更新
+- 精选内容评选：每月一次
+- 详细规则请参考 [奖励系统说明](../REWARD_SYSTEM.md)
