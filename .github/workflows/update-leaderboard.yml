@@ -76,11 +76,11 @@ jobs:
         id: check_changes
         run: |
           git status
-          echo "Has changes: $(git status --porcelain | grep -q .; echo $?)"
-          echo "::set-output name=has_changes::$(git status --porcelain | grep -q .; echo $?)"
+          changed=$(git status --porcelain | wc -l)
+          echo "changed=$changed" >> $GITHUB_OUTPUT
 
       - name: Commit changes
-        if: steps.check_changes.outputs.has_changes == '0'
+        if: steps.check_changes.outputs.changed != '0'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -89,7 +89,7 @@ jobs:
           echo "Changes committed successfully"
 
       - name: Push changes
-        if: steps.check_changes.outputs.has_changes == '0'
+        if: steps.check_changes.outputs.changed != '0'
         run: |
           echo "Pushing changes to repository..."
           git push
