@@ -17,8 +17,8 @@ on:
 jobs:
   update-leaderboard:
     runs-on: ubuntu-latest
-    # 只在 PR 合并到 main 分支时或直接推送到 main 分支时更新积分
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    # 只在 PR 被合并到 main 分支时运行
+    if: github.event.pull_request.merged == true
 
     permissions:
       contents: write
@@ -86,13 +86,18 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add community/leaderboard.md
           git commit -m "Update leaderboard [skip ci]"
-          echo "Changes committed successfully"
 
-      - name: Push changes
+      # 创建一个新分支来提交更改
+      - name: Create Pull Request
         if: steps.check_changes.outputs.changed != '0'
-        run: |
-          echo "Pushing changes to repository..."
-          git push
-          echo "Changes pushed successfully"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update leaderboard
+          title: 'Auto: Update leaderboard'
+          body: |
+            自动更新积分排行榜
+
+            由 GitHub Actions 自动生成
+          branch: auto-update-leaderboard
+          base: main
