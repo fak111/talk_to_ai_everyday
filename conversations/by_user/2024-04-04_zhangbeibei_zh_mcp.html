@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>MCP 图解指南</title>
+   <style>
+      body {
+         font-family: 'Arial', sans-serif;
+         line-height: 1.6;
+         color: #333;
+         max-width: 1000px;
+         margin: 0 auto;
+         padding: 20px;
+      }
+
+      h1,
+      h2,
+      h3 {
+         color: #2c3e50;
+      }
+
+      .container {
+         background-color: #f9f9f9;
+         border-radius: 10px;
+         padding: 20px;
+         margin-bottom: 20px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .concept {
+         background-color: #fff;
+         border-left: 5px solid #3498db;
+         padding: 15px;
+         margin-bottom: 15px;
+         border-radius: 5px;
+      }
+
+      .metaphor {
+         background-color: #fffbeb;
+         border-left: 5px solid #f1c40f;
+         padding: 15px;
+         margin: 10px 0;
+         font-style: italic;
+      }
+
+      .diagram {
+         background-color: #f0f8ff;
+         padding: 15px;
+         border-radius: 5px;
+         margin: 20px 0;
+         text-align: center;
+      }
+
+      .comparison {
+         display: flex;
+         justify-content: space-around;
+         margin: 20px 0;
+      }
+
+      .comparison-item {
+         flex: 1;
+         padding: 10px;
+         background-color: #e8f4f8;
+         margin: 0 10px;
+         border-radius: 5px;
+      }
+
+      .note {
+         background-color: #e3f2fd;
+         padding: 10px;
+         border-radius: 5px;
+         margin: 10px 0;
+      }
+
+      svg {
+         max-width: 100%;
+         height: auto;
+      }
+   </style>
+</head>
+
+<body>
+   <h1>模型上下文协议 (MCP) 图解指南</h1>
+
+   <div class="container">
+      <h2>🌟 MCP 全景图</h2>
+
+      <div class="diagram">
+         <svg viewBox="0 0 600 400">
+            <!-- 大脑代表AI模型 -->
+            <ellipse cx="300" cy="80" rx="50" ry="40" fill="#9b59b6" />
+            <text x="300" y="85" text-anchor="middle" fill="white">AI模型</text>
+
+            <!-- MCP协议本身 -->
+            <rect x="100" y="150" width="400" height="50" rx="10" fill="#3498db" />
+            <text x="300" y="180" text-anchor="middle" fill="white">模型上下文协议 (MCP)</text>
+
+            <!-- 数据源和工具 -->
+            <rect x="50" y="250" width="100" height="80" rx="10" fill="#27ae60" />
+            <text x="100" y="290" text-anchor="middle" fill="white">本地文件</text>
+
+            <rect x="200" y="250" width="100" height="80" rx="10" fill="#27ae60" />
+            <text x="250" y="290" text-anchor="middle" fill="white">数据库</text>
+
+            <rect x="350" y="250" width="100" height="80" rx="10" fill="#27ae60" />
+            <text x="400" y="290" text-anchor="middle" fill="white">网络API</text>
+
+            <rect x="500" y="250" width="100" height="80" rx="10" fill="#27ae60" />
+            <text x="550" y="290" text-anchor="middle" fill="white">其他工具</text>
+
+            <!-- 连接线 -->
+            <line x1="300" y1="120" x2="300" y2="150" stroke="#333" stroke-width="2" />
+            <line x1="100" y1="200" x2="100" y2="250" stroke="#333" stroke-width="2" />
+            <line x1="250" y1="200" x2="250" y2="250" stroke="#333" stroke-width="2" />
+            <line x1="400" y1="200" x2="400" y2="250" stroke="#333" stroke-width="2" />
+            <line x1="500" y1="200" x2="500" y2="250" stroke="#333" stroke-width="2" />
+         </svg>
+      </div>
+
+      <div class="metaphor">
+         想象一下MCP就像是一座魔法桥梁，连接AI大脑和外部世界的各种宝藏。AI可以通过这座桥走出去，去查阅文件、搜索信息、使用工具，然后带着这些知识回来回答你的问题！
+      </div>
+   </div>
+
+   <div class="container">
+      <h2>🏗️ 核心架构</h2>
+
+      <div class="concept">
+         <h3>Host（主机）</h3>
+         <p>像Claude这样的AI应用程序，需要访问外部数据</p>
+      </div>
+
+      <div class="concept">
+         <h3>Client（客户端）</h3>
+         <p>在Host中运行的协议客户端组件，与服务器建立1:1连接</p>
+      </div>
+
+      <div class="concept">
+         <h3>Server（服务器）</h3>
+         <p>提供特定功能的轻量级程序，通过MCP标准化接口暴露能力</p>
+      </div>
+
+      <div class="diagram">
+         <svg viewBox="0 0 500 250">
+            <!-- Host容器 -->
+            <rect x="50" y="50" width="150" height="100" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2" />
+            <text x="125" y="75" text-anchor="middle">Host (Claude)</text>
+
+            <!-- Client容器 -->
+            <rect x="75" y="90" width="100" height="50" rx="5" fill="#3498db" />
+            <text x="125" y="120" text-anchor="middle" fill="white">MCP Client</text>
+
+            <!-- Server -->
+            <rect x="300" y="75" width="150" height="50" rx="10" fill="#e74c3c" />
+            <text x="375" y="105" text-anchor="middle" fill="white">MCP Server</text>
+
+            <!-- 数据源 -->
+            <ellipse cx="375" cy="180" rx="60" ry="30" fill="#2ecc71" />
+            <text x="375" y="185" text-anchor="middle" fill="white">数据源/服务</text>
+
+            <!-- 连接线 -->
+            <line x1="175" y1="115" x2="300" y2="100" stroke="#333" stroke-width="2" />
+            <text x="240" y="90" text-anchor="middle">MCP连接</text>
+
+            <line x1="375" y1="125" x2="375" y2="150" stroke="#333" stroke-width="2" />
+         </svg>
+      </div>
+
+      <div class="metaphor">
+         想象Host是一个小学生(Claude)，Client是他的笔记本，Server是图书管理员。小学生想知道恐龙的信息，就通过笔记本(Client)向图书管理员(Server)提问，图书管理员去书架(数据源)找书，然后把答案给小学生。
+      </div>
+   </div>
+
+   <div class="container">
+      <h2>📦 Resources（资源）</h2>
+
+      <div class="concept">
+         <p>MCP中的基本数据单元，包含结构化信息，有唯一ID和类型</p>
+      </div>
+
+      <div class="metaphor">
+         Resource就像乐高积木，每个积木都有特定形状和颜色(类型)，还有独特编号(ID)。AI可以用这些积木搭建复杂的知识城堡！
+      </div>
+
+      <div class="comparison">
+         <div class="comparison-item">
+            <strong>资源类型举例：</strong>
+            <ul>
+               <li>文本文档</li>
+               <li>图像</li>
+               <li>工具定义</li>
+               <li>查询结果</li>
+            </ul>
+         </div>
+         <div class="comparison-item">
+            <strong>资源特点：</strong>
+            <ul>
+               <li>唯一标识符</li>
+               <li>明确的类型</li>
+               <li>可以嵌套</li>
+               <li>可以更新</li>
+            </ul>
+         </div>
+      </div>
+   </div>
+
+   <div class="container">
+      <h2>📝 Prompts（提示）</h2>
+
+      <div class="concept">
+         <p>发送给AI模型的指令，包含资源和指令信息</p>
+      </div>
+
+      <div class="metaphor">
+         Prompt就像是给AI写的一封信，信中既可以包含问题，也可以附上照片(图像资源)、参考文献(文档资源)和工具列表(功能资源)。
+      </div>
+
+      <div class="note">
+         <p>提示支持多种呈现给AI的信息，包括：文本、资源引用、历史对话等</p>
+      </div>
+   </div>
+
+   <div class="container">
+      <h2>🔧 Tools（工具）</h2>
+
+      <div class="concept">
+         <p>AI可以调用的功能，类似编程语言中的函数</p>
+      </div>
+
+      <div class="diagram">
+         <svg viewBox="0 0 400 200">
+            <!-- AI模型 -->
+            <rect x="50" y="50" width="100" height="50" rx="10" fill="#9b59b6" />
+            <text x="100" y="80" text-anchor="middle" fill="white">AI模型</text>
+
+            <!-- 工具箱 -->
+            <rect x="250" y="30" width="120" height="140" rx="5" fill="#f39c12" />
+            <text x="310" y="50" text-anchor="middle" fill="white">工具箱</text>
+
+            <!-- 工具 -->
+            <rect x="270" y="70" width="80" height="25" rx="5" fill="#ecf0f1" />
+            <text x="310" y="85" text-anchor="middle" font-size="10">天气查询</text>
+
+            <rect x="270" y="105" width="80" height="25" rx="5" fill="#ecf0f1" />
+            <text x="310" y="120" text-anchor="middle" font-size="10">计算器</text>
+
+            <rect x="270" y="140" width="80" height="25" rx="5" fill="#ecf0f1" />
+            <text x="310" y="155" text-anchor="middle" font-size="10">文件搜索</text>
+
+            <!-- 连接线 -->
+            <path d="M150,75 C200,75 200,85 250,85" stroke="#333" stroke-width="2" fill="none" />
+            <path d="M150,75 C200,75 200,120 250,120" stroke="#333" stroke-width="2" fill="none" />
+            <path d="M150,75 C200,75 200,155 250,155" stroke="#333" stroke-width="2" fill="none" />
+         </svg>
+      </div>
+
+      <div class="metaphor">
+         工具就像AI的超能力手环！当AI遇到需要计算、搜索或获取实时信息的问题时，可以按下手环上的按钮(调用工具)，立刻获得特殊能力完成任务！
+      </div>
+   </div>
+
+   <div class="container">
+      <h2>🎲 Sampling（采样）</h2>
+
+      <div class="concept">
+         <p>控制AI生成内容的过程参数，如温度、创造性等</p>
+      </div>
+
+      <div class="metaphor">
+         采样就像烹饪时的火候控制。温度低时，AI做出的"菜肴"(回答)总是很可预测，像按照精确食谱烹饪；温度高时，AI会更有创意，像大厨即兴发挥，但可能偶尔"味道怪怪的"(不那么准确)。
+      </div>
+
+      <div class="comparison">
+         <div class="comparison-item">
+            <strong>低温度设置：</strong>
+            <p>更确定、更保守的回答</p>
+            <p>适合需要精确信息的场景</p>
+         </div>
+         <div class="comparison-item">
+            <strong>高温度设置：</strong>
+            <p>更多样、更创造性的回答</p>
+            <p>适合创意写作和头脑风暴</p>
+         </div>
+      </div>
+   </div>
+
+   <div class="container">
+      <h2>🌱 Roots（根源）</h2>
+
+      <div class="concept">
+         <p>用于追踪AI决策和信息来源的链条机制</p>
+      </div>
+
+      <div class="metaphor">
+         Root就像家谱树，帮助我们追溯AI回答中每个信息"从哪里来"。当AI说"地球是圆的"，我们可以沿着Root看到这个信息是从哪本书或哪个数据源学到的。
+      </div>
+
+      <div class="note">
+         <p>这对于验证AI生成内容的准确性和解释AI决策过程非常重要</p>
+      </div>
+   </div>
+
+   <div class="container">
+      <h2>🚛 Transports（传输）</h2>
+
+      <div class="concept">
+         <p>MCP中数据传输的技术机制，如WebSocket、gRPC等</p>
+      </div>
+
+      <div class="metaphor">
+         Transport就像不同类型的道路。有高速公路(WebSocket)适合大量快速数据传输，有乡村小路(HTTP)适合简单请求，还有特殊运输车道(gRPC)适合特定类型的数据包裹。AI和服务器之间的信息就是通过这些"道路"传递的。
+      </div>
+
+      <div class="comparison">
+         <div class="comparison-item">
+            <strong>WebSocket:</strong>
+            <p>持久连接</p>
+            <p>适合实时双向通信</p>
+         </div>
+         <div class="comparison-item">
+            <strong>HTTP:</strong>
+            <p>请求-响应模式</p>
+            <p>适合简单数据交换</p>
+         </div>
+         <div class="comparison-item">
+            <strong>gRPC:</strong>
+            <p>高性能RPC框架</p>
+            <p>适合微服务架构</p>
+         </div>
+      </div>
+   </div>
+
+   <div class="container">
+      <h2>🔄 Function Call与MCP的关系</h2>
+
+      <div class="concept">
+         <p>Function Call是MCP Tools概念的一种简化实现</p>
+      </div>
+
+      <div class="diagram">
+         <svg viewBox="0 0 500 200">
+            <!-- MCP大圈 -->
+            <ellipse cx="250" cy="100" rx="220" ry="90" fill="#eef2f7" stroke="#3498db" stroke-width="2" />
+            <text x="250" y="50" text-anchor="middle" font-size="16" fill="#3498db">MCP完整生态系统</text>
+
+            <!-- Function Call小圈 -->
+            <ellipse cx="180" cy="120" rx="100" ry="50" fill="#e8f4f8" stroke="#e74c3c" stroke-width="2" />
+            <text x="180" y="125" text-anchor="middle" fill="#e74c3c">Function Call</text>
+
+            <!-- 其他MCP特性 -->
+            <text x="320" y="85" text-anchor="middle">Resources</text>
+            <text x="350" y="120" text-anchor="middle">Roots</text>
+            <text x="320" y="155" text-anchor="middle">Transports</text>
+         </svg>
+      </div>
+
+      <div class="metaphor">
+         如果MCP是一个完整的游乐园，有过山车、旋转木马、碰碰车和餐厅，那么Function Call就像只是其中的旋转木马。很好玩，但只是整个游乐体验的一部分！
+      </div>
+   </div>
+
+   <div class="container">
+      <h2>🎓 总结</h2>
+
+      <div class="concept">
+         <p>MCP是一套完整的协议，让AI能够以标准化方式与外部世界互动</p>
+      </div>
+
+      <div class="metaphor">
+         MCP就像给AI打开了一扇通往真实世界的大门。以前的AI像被关在房间里的小孩，只能靠记忆中的知识回答问题；有了MCP，AI可以走出房间，查阅书籍(文件)、问专家(API)、使用工具，真正成为我们的智能助手！
+      </div>
+   </div>
+</body>
+
+</html>
